@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="VirtualPetShelterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-06-02T15:13:08" hostname="DESKTOP-EDLLPTH" time="0.02">
+  <properties/>
+  <testcase name="shouldIncreaseEnergy()" classname="VirtualPetShelterTest" time="0.016"/>
+  <testcase name="shouldIncreaseHunger()" classname="VirtualPetShelterTest" time="0.0"/>
+  <testcase name="shouldAddPetToShelterAndReturnPet()" classname="VirtualPetShelterTest" time="0.002"/>
+  <system-out><![CDATA[Chan fell asleep.
+Zzz
+Zzz
+Zzz
+Chan fell asleep.
+Zzz
+Zzz
+Zzz
+Pet Found
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
