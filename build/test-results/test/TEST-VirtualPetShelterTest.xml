@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="VirtualPetShelterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-06-02T15:13:08" hostname="DESKTOP-EDLLPTH" time="0.02">
+<testsuite name="VirtualPetShelterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-06-14T15:18:03" hostname="DESKTOP-EDLLPTH" time="0.028">
   <properties/>
-  <testcase name="shouldIncreaseEnergy()" classname="VirtualPetShelterTest" time="0.016"/>
-  <testcase name="shouldIncreaseHunger()" classname="VirtualPetShelterTest" time="0.0"/>
-  <testcase name="shouldAddPetToShelterAndReturnPet()" classname="VirtualPetShelterTest" time="0.002"/>
-  <system-out><![CDATA[Chan fell asleep.
-Zzz
-Zzz
-Zzz
-Chan fell asleep.
-Zzz
-Zzz
-Zzz
+  <testcase name="shouldIncreaseHealth()" classname="VirtualPetShelterTest" time="0.017"/>
+  <testcase name="shouldInreaseLoyality()" classname="VirtualPetShelterTest" time="0.006"/>
+  <testcase name="shouldAddPetToShelterAndReturnPet()" classname="VirtualPetShelterTest" time="0.003"/>
+  <system-out><![CDATA[Woof is playing...
+Woof is well fed.
+Woof is hydrated!
+You took Woof for a walk.
+Walking
+...
+...
+Woof is well fed.
+Woof is hydrated!
 Pet Found
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
