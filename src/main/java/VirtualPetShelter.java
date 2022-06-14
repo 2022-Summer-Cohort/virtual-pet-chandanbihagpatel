@@ -1,4 +1,3 @@
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class VirtualPetShelter {
@@ -8,17 +7,16 @@ public class VirtualPetShelter {
         this.petShelter = new ArrayList<>();
     }
 
-    public ArrayList<VirtualPet> getPetShelter() {
+    public ArrayList<VirtualPet> getPetShelter(){
         return petShelter;
     }
-    public void addPet(VirtualPet petToAdd){
-        petShelter.add(petToAdd);
-
+    public void addPet(VirtualPet myPet){
+        petShelter.add(myPet);
     }
     public VirtualPet adoptPet(String adoptPet){
-        VirtualPet petToAdopt = new VirtualPet("null",0,0,0);
+        VirtualPet petToAdopt = new OrganicDog("Null", 0, 0, 0, 0, 0, 0);
         for(VirtualPet pets : petShelter){
-            String name = pets.getPetName();
+            String name = pets.getName();
             if(name.equals(adoptPet)){
                 System.out.println("Pet Found");
                 petToAdopt = pets;
@@ -29,47 +27,35 @@ public class VirtualPetShelter {
     }
     public void removePet(String adoptPet){
         for(VirtualPet pets : petShelter){
-            String name = pets.getPetName();
+            String name = pets.getName();
             if(name.equals(adoptPet)){
                 System.out.println("Removing pet from shelter.");
                 petShelter.remove(pets);
                 break;
             }
-            else{
-                System.out.println("That pet wasn't found.");
-            }
         }
-    }
-    public void feedAll(){
-        for(VirtualPet pets : petShelter){
-            pets.feedPet();
-        }
-
-    }
-    public void infoAll(){
-        for(VirtualPet pets : petShelter){
-            pets.info();
-        }
-
     }
     public void playAll(){
         int i = petShelter.size()-1;
         for(VirtualPet pets : petShelter){
             VirtualPet playPartner = petShelter.get(i);
-            pets.playPet();
+            pets.play();
             if(pets == playPartner){
                 System.out.println(" with you  .");
 
             }
             else{
-                System.out.println(" with " + playPartner.getPetName());
+                System.out.println(" with " + playPartner.getName());
             }
             i--;
         }
+        System.out.println("Playing with pets in the shelter will continue to lower their health. You should pick a pet to adopt.");
     }
-    public void sleepAll(){
+    public void listAll(){
         for(VirtualPet pets : petShelter){
-            pets.sleep();
+            System.out.println(pets.getName());
         }
     }
+
+
 }
