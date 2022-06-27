@@ -35,18 +35,11 @@ public class VirtualPetShelter {
             }
         }
     }
-    public void playAll(){
+    public void playAll(String command, VirtualPetShelter myShelter){
         int i = petShelter.size()-1;
         for(VirtualPet pets : petShelter){
-            VirtualPet playPartner = petShelter.get(i);
-            pets.play();
-            if(pets == playPartner){
-                System.out.println(" with you  .");
+            VirtualPetApp.directToGameLoop(pets, myShelter, command);
 
-            }
-            else{
-                System.out.println(" with " + playPartner.getName());
-            }
             i--;
         }
         System.out.println("Playing with pets in the shelter will continue to lower their health. You should pick a pet to adopt.");

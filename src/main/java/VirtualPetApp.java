@@ -34,12 +34,7 @@ public class VirtualPetApp {
         System.out.println("Type: yes or no.");
 
     }
-    public static void OrganicDogGameLoop(VirtualPet myPet, VirtualPetShelter myShelter){
-        Scanner input = new Scanner(System.in);
-        int x = 0;
-        while(x == 0){
-            System.out.println("What do you want to do with " + myPet.getName() + "?");
-            String command = input.nextLine();
+    public static void OrganicDogGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
                 myPet.play();
                 myPet.eval();
@@ -91,13 +86,7 @@ public class VirtualPetApp {
                 System.out.println("Try help.");
             }
         }
-    }
-    public static void OrganicCatGameLoop(VirtualPet myPet, VirtualPetShelter myShelter){
-        Scanner input = new Scanner(System.in);
-        int x = 0;
-        while(x == 0){
-            System.out.println("What do you want to do with " + myPet.getName() + "?");
-            String command = input.nextLine();
+    public static void OrganicCatGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
                 myPet.play();
                 myPet.eval();
@@ -149,13 +138,7 @@ public class VirtualPetApp {
                 System.out.println("Try help.");
             }
         }
-    }
-    public static void RoboticDogGameLoop(VirtualPet myPet, VirtualPetShelter myShelter){
-        Scanner input = new Scanner(System.in);
-        int x = 0;
-        while(x == 0){
-            System.out.println("What do you want to do with " + myPet.getName() + "?");
-            String command = input.nextLine();
+    public static void RoboticDogGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
                 myPet.play();
                 myPet.eval();
@@ -202,13 +185,7 @@ public class VirtualPetApp {
                 System.out.println("Command not found.");
             }
         }
-    }
-    public static void RoboticCatGameLoop(VirtualPet myPet, VirtualPetShelter myShelter){
-        Scanner input = new Scanner(System.in);
-        int x = 0;
-        while(x == 0){
-            System.out.println("What do you want to do with " + myPet.getName() + "?");
-            String command = input.nextLine();
+    public static void RoboticCatGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
                 myPet.play();
                 myPet.eval();
@@ -249,37 +226,14 @@ public class VirtualPetApp {
                 System.out.println("Command not found.");
             }
         }
-    }
     public static void GameLoopAll(VirtualPetShelter myShelter) {
         Scanner input = new Scanner(System.in);
         int loop = 0;
         while (loop == 0) {
             System.out.println("What would you like to do at the shelter?");
             String command = input.nextLine();
-            command = command.toUpperCase();
-            if (command.equals("PLAY")) {
-                myShelter.playAll();
-            } else if (command.equals("ADOPT")) {
-                System.out.println("Which pet do you want to adopt?");
-                String adoptPets = input.nextLine();
-                VirtualPet adoptedPet = myShelter.adoptPet(adoptPets);
-                if (adoptedPet.getName().equals("Null")) {
-                    System.out.println("Pet not found.");
-                    System.out.println("Try again.");
-                } else {
-                    myShelter.removePet(adoptPets);
-                    directToGameLoop(adoptedPet, myShelter);
-                }
-            } else if (command.equals("LIST")) {
-                myShelter.listAll();
-            }
-            else if(command.equals("HELP")){
-                GlaInfo();
-            }
-            else{
-                System.out.println("Command not found!");
-                System.out.println("Try help.");
-            }
+            command = command.toLowerCase();
+            myShelter.playAll(command, myShelter);
         }
     }
 
@@ -372,18 +326,18 @@ public class VirtualPetApp {
         System.out.println("Add:      add pet to the pet shelter.");
         System.out.println("Info:     lists the current stats of your pet.");
     }
-    public static void directToGameLoop(VirtualPet myPet, VirtualPetShelter myShelter){
+    public static void directToGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
         if(myPet instanceof OrganicCat){
-            OrganicCatGameLoop(myPet, myShelter);
+            OrganicCatGameLoop(myPet, myShelter, command);
         }
         else if(myPet instanceof OrganicDog){
-            OrganicDogGameLoop(myPet, myShelter);
+            OrganicDogGameLoop(myPet, myShelter, command);
         }
         else if(myPet instanceof RoboticDog){
-            RoboticDogGameLoop(myPet, myShelter);
+            RoboticDogGameLoop(myPet, myShelter, command);
         }
         else if(myPet instanceof RoboticCat){
-            RoboticCatGameLoop(myPet, myShelter);
+            RoboticCatGameLoop(myPet, myShelter, command);
         }
     }
 }
