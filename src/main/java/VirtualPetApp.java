@@ -85,7 +85,6 @@ public class VirtualPetApp {
                 System.out.println("Command not found.");
                 System.out.println("Try help.");
             }
-            GameLoopAll(myShelter);
         }
     public static void OrganicCatGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
@@ -138,7 +137,6 @@ public class VirtualPetApp {
                 System.out.println("Command not found.");
                 System.out.println("Try help.");
             }
-        GameLoopAll(myShelter);
         }
     public static void RoboticDogGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
@@ -186,7 +184,6 @@ public class VirtualPetApp {
             else{
                 System.out.println("Command not found.");
             }
-        GameLoopAll(myShelter);
         }
     public static void RoboticCatGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
@@ -228,7 +225,6 @@ public class VirtualPetApp {
             else{
                 System.out.println("Command not found.");
             }
-        GameLoopAll(myShelter);
         }
     public static void GameLoopAll(VirtualPetShelter myShelter) {
         Scanner input = new Scanner(System.in);
@@ -241,12 +237,30 @@ public class VirtualPetApp {
                 System.out.println("Which pet would you like to adopt?");
                 String adoptPet = input.nextLine();
                 VirtualPet newPet = myShelter.adoptPet(adoptPet);
-                System.out.println("What would like to do with this pet?");
-                String newCommand = input.nextLine();
-                directToGameLoop(newPet, myShelter, newCommand);
+                myShelter.removePet(adoptPet);
+                individualGameLoop(newPet, myShelter);
+            }
+            else if(command.equals("list")){
+                myShelter.listAll();
             }
             else {
                 myShelter.playAll(command, myShelter);
+            }
+        }
+    }
+    public static void individualGameLoop(VirtualPet myPet, VirtualPetShelter myShelter){
+        Scanner input = new Scanner(System.in);
+        int loop = 0;
+        while(loop == 0){
+            System.out.println("What would like to do with this pet?");
+            String command = input.nextLine();
+            directToGameLoop(myPet, myShelter, command);
+            if(command.equals("add")){
+                myShelter.addPet(myPet);
+                GameLoopAll(myShelter);
+            }
+            else{
+                directToGameLoop(myPet, myShelter, command);
             }
         }
     }
