@@ -85,6 +85,7 @@ public class VirtualPetApp {
                 System.out.println("Command not found.");
                 System.out.println("Try help.");
             }
+            GameLoopAll(myShelter);
         }
     public static void OrganicCatGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
@@ -137,6 +138,7 @@ public class VirtualPetApp {
                 System.out.println("Command not found.");
                 System.out.println("Try help.");
             }
+        GameLoopAll(myShelter);
         }
     public static void RoboticDogGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
@@ -184,6 +186,7 @@ public class VirtualPetApp {
             else{
                 System.out.println("Command not found.");
             }
+        GameLoopAll(myShelter);
         }
     public static void RoboticCatGameLoop(VirtualPet myPet, VirtualPetShelter myShelter, String command){
             if(command.equals("play")){
@@ -225,6 +228,7 @@ public class VirtualPetApp {
             else{
                 System.out.println("Command not found.");
             }
+        GameLoopAll(myShelter);
         }
     public static void GameLoopAll(VirtualPetShelter myShelter) {
         Scanner input = new Scanner(System.in);
@@ -233,7 +237,17 @@ public class VirtualPetApp {
             System.out.println("What would you like to do at the shelter?");
             String command = input.nextLine();
             command = command.toLowerCase();
-            myShelter.playAll(command, myShelter);
+            if(command.equals("adopt")){
+                System.out.println("Which pet would you like to adopt?");
+                String adoptPet = input.nextLine();
+                VirtualPet newPet = myShelter.adoptPet(adoptPet);
+                System.out.println("What would like to do with this pet?");
+                String newCommand = input.nextLine();
+                directToGameLoop(newPet, myShelter, newCommand);
+            }
+            else {
+                myShelter.playAll(command, myShelter);
+            }
         }
     }
 
