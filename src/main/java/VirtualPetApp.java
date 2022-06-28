@@ -254,7 +254,6 @@ public class VirtualPetApp {
         while(loop == 0){
             System.out.println("What would like to do with this pet?");
             String command = input.nextLine();
-            directToGameLoop(myPet, myShelter, command);
             if(command.equals("add")){
                 myShelter.addPet(myPet);
                 GameLoopAll(myShelter);
